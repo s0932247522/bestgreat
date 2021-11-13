@@ -103,8 +103,8 @@ def handle_message(event):
     #     val += '已達成人數：\t'+ peo_num
     #     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
     
-val = "正常執行S"
-line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
+    val = "正常執行S"
+    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
 
         
         
