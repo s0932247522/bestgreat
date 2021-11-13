@@ -102,8 +102,12 @@ def handle_message(event):
     #     val += '人數達成率：\t'+ rate + '\n'
     #     val += '已達成人數：\t'+ peo_num
     #     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
-    
-    val = "正常執行S"
+    gc = pygsheets.authorize(service_account_file='bestgreat.json')
+    gs_url = 'https://docs.google.com/spreadsheets/d/1UwEf2DLgod9Gb1Oe6SK2BOgvddWbNt-3y6eUnogaIRw/edit#gid=0'
+    sh = gc.open_by_url(gs_url)
+    ws = sh.worksheet_by_title('imm_total')
+    tt = ws.get_values('A:A','E:E')
+    val = tt[6][2S]
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
 
         
