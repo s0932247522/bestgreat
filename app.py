@@ -107,7 +107,7 @@ def handle_message(event):
     sh = gc.open_by_url(gs_url)
     ws = sh.worksheet_by_title('imm_total')
     tt = ws.get_values('A:A','E:E')
-    val = tt[6][2S]
+    val = tt[6][2]
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
 
         
