@@ -28,30 +28,30 @@ handler = WebhookHandler('5b8be3b8730f373648e646bfc4b6c1ed')
 #             rate = ws.get_value('G' + str(cell))
 #             return goal, now, achieve, disparity
 
-def personal(name,ws):
-    tt = ws.get_values('A1','G56')
-    for cel in range(1,len(tt)):
-         #0:隊別、 1:name、 2:goal、 3:now、 4:achieve、 5:disparity、 6:rate
-        if tt[cel][1].split('-')[1].lstrip() == name:
-            goal = tt[cel][3]
-            now = tt[cel][2]
-            achieve = tt[cel][4]
-            disparity = tt[cel][5]
-            rate = tt[cel][6]
-            return goal, now, achieve, disparity, rate
+# def personal(name,ws):
+#     tt = ws.get_values('A1','G56')
+#     for cel in range(1,len(tt)):
+#          #0:隊別、 1:name、 2:goal、 3:now、 4:achieve、 5:disparity、 6:rate
+#         if tt[cel][1].split('-')[1].lstrip() == name:
+#             goal = tt[cel][3]
+#             now = tt[cel][2]
+#             achieve = tt[cel][4]
+#             disparity = tt[cel][5]
+#             rate = tt[cel][6]
+#             return goal, now, achieve, disparity, rate
 
-def personal_5(name,ws):
-    tt = ws.get_values('A1','H56')
-    for cel in range(1,len(tt)):
-         #0:隊別、 1:name、 2:goal、 3:now、 4:achieve、 5:disparity、 6:rate
-        if tt[cel][1].split('-')[1].lstrip() == name:
-            goal = tt[cel][4]
-            now = tt[cel][2]
-            achieve = tt[cel][5]
-            disparity = tt[cel][6]
-            rate = tt[cel][7]
-            task = tt[cel][3]
-            return goal, now, achieve, disparity, rate, task
+# def personal_5(name,ws):
+#     tt = ws.get_values('A1','H56')
+#     for cel in range(1,len(tt)):
+#          #0:隊別、 1:name、 2:goal、 3:now、 4:achieve、 5:disparity、 6:rate
+#         if tt[cel][1].split('-')[1].lstrip() == name:
+#             goal = tt[cel][4]
+#             now = tt[cel][2]
+#             achieve = tt[cel][5]
+#             disparity = tt[cel][6]
+#             rate = tt[cel][7]
+#             task = tt[cel][3]
+#             return goal, now, achieve, disparity, rate, task
         
 
 
