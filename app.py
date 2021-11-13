@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 line_bot_api = LineBotApi('vixzEpnS9sDjYhGz+CQx54mRmIzVSvG3PwsVa0nj+dA9RYG01WeejkJoEZm9Eo3q/4odGV7jghHg9zPMfQtdvDUY+op5VRdXV/hs3oXdukHiWfo3Sn2awMtMBN5IisqVm0fBHpcZaAPM5x0jlpOinQdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('5b8be3b8730f373648e646bfc4b6c1ed')
-
+#已改機器人位置
 
 
 # def personal(name,ws):
@@ -79,32 +79,32 @@ def handle_message(event):
         
     
 
-    if (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[2] == '超跑隊') and (len(event.message.text.split('-')) == 3):
-        super_week = {'1':'3', '2':'6', '3':'9', '4':'12', '5':'15', '6':'18' }
-        gc = pygsheets.authorize(service_account_file='superrun.json')
-        gs_url = 'https://docs.google.com/spreadsheets/d/1mk9luUpS0h2XHZ1p2gKECADIMc-hdAjXQlxPM-9F40U/edit#gid=0'
-        sh = gc.open_by_url(gs_url)
-        ws = sh.worksheet_by_title('imm_total')
-        tt = ws.get_values('A' + super_week[event.message.text.split('-')[1]],'I'+ super_week[event.message.text.split('-')[1]]) 
-        g = tt[0][2]
-        n = tt[0][3]
-        g_r = tt[0][4]
-        a = tt[0][5]
-        d = int(g) - int(n)
-        rate = tt[0][8]
-        peo_num = tt[0][7] + '  /  ' + tt[0][6]
-        val = event.message.text.split('-')[2] + ' ：\t第 '+ event.message.text.split('-')[1] + ' 週' +  '\n'
-        val += '目前步數：\t'+ n + '步\n'
-        val += '本週目標：\t'+ g + '步\n'
-        val += '是否達標：\t'+ a + '\n'
-        val += '剩餘步數：\t'+ str(d) + '步\n'
-        val += '步數達成率：\t'+ g_r + '\n'
-        val += '人數達成率：\t'+ rate + '\n'
-        val += '已達成人數：\t'+ peo_num
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
+    # if (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[2] == '超跑隊') and (len(event.message.text.split('-')) == 3):
+    #     super_week = {'1':'3', '2':'6', '3':'9', '4':'12', '5':'15', '6':'18' }
+    #     gc = pygsheets.authorize(service_account_file='superrun.json')
+    #     gs_url = 'https://docs.google.com/spreadsheets/d/1mk9luUpS0h2XHZ1p2gKECADIMc-hdAjXQlxPM-9F40U/edit#gid=0'
+    #     sh = gc.open_by_url(gs_url)
+    #     ws = sh.worksheet_by_title('imm_total')
+    #     tt = ws.get_values('A' + super_week[event.message.text.split('-')[1]],'I'+ super_week[event.message.text.split('-')[1]]) 
+    #     g = tt[0][2]
+    #     n = tt[0][3]
+    #     g_r = tt[0][4]
+    #     a = tt[0][5]
+    #     d = int(g) - int(n)
+    #     rate = tt[0][8]
+    #     peo_num = tt[0][7] + '  /  ' + tt[0][6]
+    #     val = event.message.text.split('-')[2] + ' ：\t第 '+ event.message.text.split('-')[1] + ' 週' +  '\n'
+    #     val += '目前步數：\t'+ n + '步\n'
+    #     val += '本週目標：\t'+ g + '步\n'
+    #     val += '是否達標：\t'+ a + '\n'
+    #     val += '剩餘步數：\t'+ str(d) + '步\n'
+    #     val += '步數達成率：\t'+ g_r + '\n'
+    #     val += '人數達成率：\t'+ rate + '\n'
+    #     val += '已達成人數：\t'+ peo_num
+    #     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
     
-
-
+val = "正常執行S"
+line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
 
         
         
