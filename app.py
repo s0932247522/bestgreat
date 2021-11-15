@@ -112,7 +112,7 @@ def handle_message(event):
         a1 = tt[3][3]
         b1 = tt[3][4]
         date1 = tt[6][3]
-        data2 = tt[7][3]
+        date2 = tt[7][3]
         val = '尚讚隊\n'
         val += '日期：\t'+ date1 + '\n'
         val += '剩下：\t'+ date2 + '\t天\n'
