@@ -102,7 +102,7 @@ def handle_message(event):
     #     val += '人數達成率：\t'+ rate + '\n'
     #     val += '已達成人數：\t'+ peo_num
     #     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
-    if (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[2] == '尚讚') :
+    if (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '尚讚') and (len(event.message.text.split('-')) == 2):
 
         gc = pygsheets.authorize(service_account_file='bestgreat.json')
         gs_url = 'https://docs.google.com/spreadsheets/d/1UwEf2DLgod9Gb1Oe6SK2BOgvddWbNt-3y6eUnogaIRw/edit#gid=0'
