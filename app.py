@@ -148,9 +148,9 @@ def handle_message(event):
         ws = sh.worksheet_by_title('now')
         tt = ws.get_values('A:A','G:G')
         val = '日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][5] + ' / 21\n'
-        val += '個人\t團隊\t隊員\n'
-        for cel in range(5,len(tt)):
-            val +=  '  ' + tt[cel][5] + '\t ' + tt[cel][6] + '\t' + tt[cel][4] + '\n' 
+        val += '個人\t∣ 團隊\t∣ 隊員\n'
+        for cel in range(4,len(tt)):
+            val +=  '  ' + tt[cel][5] + '\t∣ ' + tt[cel][6] + '\t∣ ' + tt[cel][4] + '\n' 
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
         
         
