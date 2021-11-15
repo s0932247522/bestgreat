@@ -111,16 +111,34 @@ def handle_message(event):
         tt = ws.get_values('A:A','E:E')
         a1 = tt[3][3]
         b1 = tt[3][4]
-        date1 = tt[6][3]
-        date2 = tt[7][3]
+        date1 = tt[6][2]
+        date2 = tt[7][2]
+        total = tt[4][3]
         val = '尚讚隊\n'
-        val += '日期：\t'+ date1 + '\n'
-        val += '剩下：\t'+ date2 + '\t天\n'
+        val += '今天日期：\t'+ date1 + '\n'
+        val += '剩下天數：\t'+ date2 + '\t天\n'
         val += '個人賽道：\t'+ a1 + '\t分\n'
         val += '團隊賽道：\t'+ b1 + '\t分\n'
+        val += '總計分數：\t'+ total + '\t分\n'
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
+    elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '紅不讓') and (len(event.message.text.split('-')) == 2):
 
-
-
+        gc = pygsheets.authorize(service_account_file='bestgreat.json')
+        gs_url = 'https://docs.google.com/spreadsheets/d/1UwEf2DLgod9Gb1Oe6SK2BOgvddWbNt-3y6eUnogaIRw/edit#gid=0'
+        sh = gc.open_by_url(gs_url)
+        ws = sh.worksheet_by_title('imm_total')
+        tt = ws.get_values('A:A','E:E')
+        a1 = tt[3][1]
+        b1 = tt[3][2]
+        date1 = tt[6][2]
+        date2 = tt[7][2]
+        total = tt[4][1]
+        val = '尚讚隊\n'
+        val += '今天日期：\t'+ date1 + '\n'
+        val += '剩下天數：\t'+ date2 + '\t天\n'
+        val += '個人賽道：\t'+ a1 + '\t分\n'
+        val += '團隊賽道：\t'+ b1 + '\t分\n'
+        val += '總計分數：\t'+ total + '\t分\n'
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
 
         
