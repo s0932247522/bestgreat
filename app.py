@@ -116,7 +116,7 @@ def handle_message(event):
         total = tt[4][3]
         val = '尚讚隊\n'
         val += '今天日期：\t'+ date1 + '\n'
-        val += '剩下天數：\t'+ date2 + '\t天\n'
+        val += '倒數天數：\t'+ date2 + '\t天\n'
         val += '個人賽道：\t'+ a1 + '\t分\n'
         val += '團隊賽道：\t'+ b1 + '\t分\n'
         val += '總計分數：\t'+ total + '\t分\n'
@@ -133,16 +133,32 @@ def handle_message(event):
         date1 = tt[6][2]
         date2 = tt[7][2]
         total = tt[4][1]
-        val = '尚讚隊\n'
+        val = '紅不讓隊\n'
         val += '今天日期：\t'+ date1 + '\n'
-        val += '剩下天數：\t'+ date2 + '\t天\n'
+        val += '倒數天數：\t'+ date2 + '\t天\n'
         val += '個人賽道：\t'+ a1 + '\t分\n'
         val += '團隊賽道：\t'+ b1 + '\t分\n'
         val += '總計分數：\t'+ total + '\t分\n'
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
+    elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '尚讚') and (event.message.text.split('-')[2] == 'detail') and (len(event.message.text.split('-')) == 3):
 
+        gc = pygsheets.authorize(service_account_file='bestgreat.json')
+        gs_url = 'https://docs.google.com/spreadsheets/d/1UwEf2DLgod9Gb1Oe6SK2BOgvddWbNt-3y6eUnogaIRw/edit#gid=0'
+        sh = gc.open_by_url(gs_url)
+        ws = sh.worksheet_by_title('now')
+        tt = ws.get_values('A:A','E:E')
+        val = '隊員\t 個人\t 團隊\t'
+        for cel in range(0,len(tt)):
+            val +=  tt[cel][4] + '\t' + tt[cel][5] + '\t' + tt[cel][6] + '\t' 
+
+
+
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
         
         
+        
+            
+            
 
 
 if __name__ == "__main__":
