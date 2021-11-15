@@ -102,13 +102,26 @@ def handle_message(event):
     #     val += '人數達成率：\t'+ rate + '\n'
     #     val += '已達成人數：\t'+ peo_num
     #     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
-    gc = pygsheets.authorize(service_account_file='bestgreat.json')
-    gs_url = 'https://docs.google.com/spreadsheets/d/1UwEf2DLgod9Gb1Oe6SK2BOgvddWbNt-3y6eUnogaIRw/edit#gid=0'
-    sh = gc.open_by_url(gs_url)
-    ws = sh.worksheet_by_title('imm_total')
-    tt = ws.get_values('A:A','E:E')
-    val = tt[6][2]
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
+    if (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[2] == '尚讚') :
+
+        gc = pygsheets.authorize(service_account_file='bestgreat.json')
+        gs_url = 'https://docs.google.com/spreadsheets/d/1UwEf2DLgod9Gb1Oe6SK2BOgvddWbNt-3y6eUnogaIRw/edit#gid=0'
+        sh = gc.open_by_url(gs_url)
+        ws = sh.worksheet_by_title('imm_total')
+        tt = ws.get_values('A:A','E:E')
+        a = tt[3][3]
+        b = tt[3][4]
+        date1 = tt[6][3]
+        data2 = tt[7][3]
+        val = '尚讚隊\n'
+        val += '日期：\t'+ dat1 + '\n'
+        val += '剩下：\t'+ dat2 + '\t天\n'
+        val += '個人賽道：\t'+ a + '\t分\n'
+        val += '團隊賽道：\t'+ b + '\t分\n'
+
+
+
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
 
         
         
