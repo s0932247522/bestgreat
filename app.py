@@ -150,7 +150,7 @@ def handle_message(event):
         val = ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][5] + ' / 21\n'
         val += '個 人\t∣ 團 隊\t∣ 隊員\n'
         for cel in range(4,len(tt)):
-            val +=  '  ' + tt[cel][5] + '\t∣  ' + tt[cel][6] + '\t∣ ' + tt[cel][4] + '\n' 
+            val +=  '  ' + tt[cel][5] + '\t\t∣  ' + tt[cel][6] + '\t\t∣ ' + tt[cel][4] + '\n' 
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
         
         
