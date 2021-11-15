@@ -149,7 +149,7 @@ def handle_message(event):
         tt = ws.get_values('A:A','G:G')
         val = '隊員\t 個人\t 團隊\t'
         for cel in range(0,len(tt)):
-            val +=  tt[cel][4] + '\t' + tt[cel][5] + '\t' + tt[cel][6] + '\t' 
+            val +=  tt[cel][4] + '\t' + tt[cel][5] + '\t' + tt[cel][6] + '\n' 
 
 
 
