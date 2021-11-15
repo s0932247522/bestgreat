@@ -146,7 +146,7 @@ def handle_message(event):
         gs_url = 'https://docs.google.com/spreadsheets/d/1UwEf2DLgod9Gb1Oe6SK2BOgvddWbNt-3y6eUnogaIRw/edit#gid=0'
         sh = gc.open_by_url(gs_url)
         ws = sh.worksheet_by_title('now')
-        tt = ws.get_values('A:A','E:E')
+        tt = ws.get_values('A:A','G:G')
         val = '隊員\t 個人\t 團隊\t'
         for cel in range(0,len(tt)):
             val +=  tt[cel][4] + '\t' + tt[cel][5] + '\t' + tt[cel][6] + '\t' 
