@@ -147,9 +147,10 @@ def handle_message(event):
         sh = gc.open_by_url(gs_url)
         ws = sh.worksheet_by_title('now')
         tt = ws.get_values('A:A','G:G')
-        val = ' 個人\t 團隊\t隊員\n'
+        val = '日期：' + tt[0][1] + '\t\t倒數天數：\t' + tt[0][5] + ' / 21\n'
+        val += ' 個人\t\t 團隊\t\t隊員\n'
         for cel in range(5,len(tt)):
-            val +=  tt[cel][5] + '\t' + tt[cel][6] + '\t' + tt[cel][4] + '\n' 
+            val +=  tt[cel][5] + '\t\t' + tt[cel][6] + '\t\t' + tt[cel][4] + '\n' 
 
 
 
