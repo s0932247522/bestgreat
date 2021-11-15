@@ -109,15 +109,15 @@ def handle_message(event):
         sh = gc.open_by_url(gs_url)
         ws = sh.worksheet_by_title('imm_total')
         tt = ws.get_values('A:A','E:E')
-        a = tt[3][3]
-        b = tt[3][4]
+        a1 = tt[3][3]
+        b1 = tt[3][4]
         date1 = tt[6][3]
         data2 = tt[7][3]
         val = '尚讚隊\n'
         val += '日期：\t'+ dat1 + '\n'
         val += '剩下：\t'+ dat2 + '\t天\n'
-        val += '個人賽道：\t'+ a + '\t分\n'
-        val += '團隊賽道：\t'+ b + '\t分\n'
+        val += '個人賽道：\t'+ a1 + '\t分\n'
+        val += '團隊賽道：\t'+ b1 + '\t分\n'
 
 
 
