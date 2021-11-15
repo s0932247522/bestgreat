@@ -114,8 +114,8 @@ def handle_message(event):
         date1 = tt[6][3]
         data2 = tt[7][3]
         val = '尚讚隊\n'
-        val += '日期：\t'+ dat1 + '\n'
-        val += '剩下：\t'+ dat2 + '\t天\n'
+        val += '日期：\t'+ date1 + '\n'
+        val += '剩下：\t'+ date2 + '\t天\n'
         val += '個人賽道：\t'+ a1 + '\t分\n'
         val += '團隊賽道：\t'+ b1 + '\t分\n'
 
