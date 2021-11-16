@@ -152,6 +152,9 @@ def handle_message(event):
         for cel in range(4,len(tt)):
             val +=  '  ' + tt[cel][5] + '\t\t∣  ' + tt[cel][6] + '\t\t∣ ' + tt[cel][4] + '\n' 
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
+    elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '自我介紹') and (len(event.message.text.split('-')) == 2):
+        val='大家好！我是來服務大家的LINE機器人\n，「#-尚讚-detail」可以查詢尚讚隊的個人成績\n，請大家好好利用我，這次比塞希望大家能夠「人人都是隊長」，互相提醒！ '
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
         
         
         
