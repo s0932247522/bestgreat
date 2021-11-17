@@ -161,7 +161,7 @@ def handle_message(event):
         ws = sh.worksheet_by_title('today_upload')
         tt = ws.get_values('A:A','D:D')
         val = '尚讚隊當天上傳資訊\n'
-        val += ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][3] + ' / 21\n'
+        val += ' 日期：' + tt[0][2] + '\n倒數天數：\t' + tt[0][3] + ' / 21\n'
         val += '個\t∣團\t∣隊\n'
         val += '人\t∣隊\t∣員\n'
         for cel in range(4,len(tt)):
@@ -176,7 +176,7 @@ def handle_message(event):
         ws = sh.worksheet_by_title('today_upload')
         tt = ws.get_values('A:A','I:I')
         val = '紅不讓隊當天上傳資訊\n'
-        val += ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][3] + ' / 21\n'
+        val += ' 日期：' + tt[0][2] + '\n倒數天數：\t' + tt[0][3] + ' / 21\n'
         val += '個\t∣團\t∣隊\n'
         val += '人\t∣隊\t∣員\n'
         for cel in range(4,len(tt)):
