@@ -121,25 +121,7 @@ def handle_message(event):
         val += '團隊賽道：\t'+ b1 + '\t分\n'
         val += '總計分數：\t'+ total + '\t分\n'
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
-    elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '紅不讓') and (len(event.message.text.split('-')) == 2):
-
-        gc = pygsheets.authorize(service_account_file='bestgreat.json')
-        gs_url = 'https://docs.google.com/spreadsheets/d/1UwEf2DLgod9Gb1Oe6SK2BOgvddWbNt-3y6eUnogaIRw/edit#gid=0'
-        sh = gc.open_by_url(gs_url)
-        ws = sh.worksheet_by_title('imm_total')
-        tt = ws.get_values('A:A','E:E')
-        a1 = tt[3][1]
-        b1 = tt[3][2]
-        date1 = tt[6][2]
-        date2 = tt[7][2]
-        total = tt[4][1]
-        val = '紅不讓隊\n'
-        val += '今天日期：\t'+ date1 + '\n'
-        val += '倒數天數：\t'+ date2 + '\t天\n'
-        val += '個人賽道：\t'+ a1 + '\t分\n'
-        val += '團隊賽道：\t'+ b1 + '\t分\n'
-        val += '總計分數：\t'+ total + '\t分\n'
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
+    
     elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '尚讚') and (event.message.text.split('-')[2] == 'detail') and (len(event.message.text.split('-')) == 3):
 
         gc = pygsheets.authorize(service_account_file='bestgreat.json')
@@ -147,11 +129,26 @@ def handle_message(event):
         sh = gc.open_by_url(gs_url)
         ws = sh.worksheet_by_title('now')
         tt = ws.get_values('A:A','G:G')
-        val = ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][5] + ' / 21\n'
+        val = '尚讚隊'
+        val += ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][5] + ' / 21\n'
         val += '個\t∣團\t∣隊\n'
         val += '人\t∣隊\t∣員\n'
         for cel in range(4,len(tt)):
             val +=  tt[cel][5] + '\t∣' + tt[cel][6] + '\t∣' + tt[cel][4] + '\n' 
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
+    elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '紅不讓') and (event.message.text.split('-')[2] == 'detail') and (len(event.message.text.split('-')) == 3):
+
+        gc = pygsheets.authorize(service_account_file='bestgreat.json')
+        gs_url = 'https://docs.google.com/spreadsheets/d/1UwEf2DLgod9Gb1Oe6SK2BOgvddWbNt-3y6eUnogaIRw/edit#gid=0'
+        sh = gc.open_by_url(gs_url)
+        ws = sh.worksheet_by_title('now')
+        tt = ws.get_values('A:A','G:G')
+        val = '紅不讓隊'
+        val += ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][5] + ' / 21\n'
+        val += '個\t∣團\t∣隊\n'
+        val += '人\t∣隊\t∣員\n'
+        for cel in range(4,len(tt)):
+            val +=  tt[cel][2] + '\t∣' + tt[cel][3] + '\t∣' + tt[cel][1] + '\n' 
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
     elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '自我介紹') and (len(event.message.text.split('-')) == 2):
         val='大家好！\n我是來服務大家的LINE機器人，「#-尚讚-detail」可以查詢尚讚隊的個人成績，請大家好好利用我，這次比賽希望大家能夠「人人都是隊長」，互相提醒！ '
@@ -163,13 +160,29 @@ def handle_message(event):
         sh = gc.open_by_url(gs_url)
         ws = sh.worksheet_by_title('today_upload')
         tt = ws.get_values('A:A','D:D')
-        val = ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][3] + ' / 21\n'
+        val = '尚讚隊當天上傳資訊'
+        val += ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][3] + ' / 21\n'
         val += '個\t∣團\t∣隊\n'
         val += '人\t∣隊\t∣員\n'
         for cel in range(4,len(tt)):
             val +=   tt[cel][2] + '\t∣' + tt[cel][3] + '\t∣' + tt[cel][1] + '\n' 
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
-        
+
+    elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '紅不讓') and (event.message.text.split('-')[2] == 'today') and (len(event.message.text.split('-')) == 3):
+
+        gc = pygsheets.authorize(service_account_file='bestgreat.json')
+        gs_url = 'https://docs.google.com/spreadsheets/d/1UwEf2DLgod9Gb1Oe6SK2BOgvddWbNt-3y6eUnogaIRw/edit#gid=0'
+        sh = gc.open_by_url(gs_url)
+        ws = sh.worksheet_by_title('today_upload')
+        tt = ws.get_values('A:A','I:I')
+        val = '紅不讓隊當天上傳資訊'
+        val += ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][3] + ' / 21\n'
+        val += '個\t∣團\t∣隊\n'
+        val += '人\t∣隊\t∣員\n'
+        for cel in range(4,len(tt)):
+            val +=   tt[cel][7] + '\t∣' + tt[cel][8] + '\t∣' + tt[cel][6] + '\n' 
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
+            
         
         
             
