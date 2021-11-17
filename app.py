@@ -129,7 +129,7 @@ def handle_message(event):
         sh = gc.open_by_url(gs_url)
         ws = sh.worksheet_by_title('now')
         tt = ws.get_values('A:A','G:G')
-        val = '尚讚隊'
+        val = '尚讚隊\n'
         val += ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][5] + ' / 21\n'
         val += '個\t∣團\t∣隊\n'
         val += '人\t∣隊\t∣員\n'
@@ -143,7 +143,7 @@ def handle_message(event):
         sh = gc.open_by_url(gs_url)
         ws = sh.worksheet_by_title('now')
         tt = ws.get_values('A:A','G:G')
-        val = '紅不讓隊'
+        val = '紅不讓隊\n'
         val += ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][5] + ' / 21\n'
         val += '個\t∣團\t∣隊\n'
         val += '人\t∣隊\t∣員\n'
@@ -160,7 +160,7 @@ def handle_message(event):
         sh = gc.open_by_url(gs_url)
         ws = sh.worksheet_by_title('today_upload')
         tt = ws.get_values('A:A','D:D')
-        val = '尚讚隊當天上傳資訊'
+        val = '尚讚隊當天上傳資訊\n'
         val += ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][3] + ' / 21\n'
         val += '個\t∣團\t∣隊\n'
         val += '人\t∣隊\t∣員\n'
@@ -175,7 +175,7 @@ def handle_message(event):
         sh = gc.open_by_url(gs_url)
         ws = sh.worksheet_by_title('today_upload')
         tt = ws.get_values('A:A','I:I')
-        val = '紅不讓隊當天上傳資訊'
+        val = '紅不讓隊當天上傳資訊\n'
         val += ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][3] + ' / 21\n'
         val += '個\t∣團\t∣隊\n'
         val += '人\t∣隊\t∣員\n'
