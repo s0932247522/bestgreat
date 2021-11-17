@@ -155,6 +155,19 @@ def handle_message(event):
     elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '自我介紹') and (len(event.message.text.split('-')) == 2):
         val='大家好！\n我是來服務大家的LINE機器人，「#-尚讚-detail」可以查詢尚讚隊的個人成績，請大家好好利用我，這次比賽希望大家能夠「人人都是隊長」，互相提醒！ '
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
+    elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '尚讚') and (event.message.text.split('-')[2] == 'today') and (len(event.message.text.split('-')) == 3):
+
+        gc = pygsheets.authorize(service_account_file='bestgreat.json')
+        gs_url = 'https://docs.google.com/spreadsheets/d/1UwEf2DLgod9Gb1Oe6SK2BOgvddWbNt-3y6eUnogaIRw/edit#gid=0'
+        sh = gc.open_by_url(gs_url)
+        ws = sh.worksheet_by_title('today_upload')
+        tt = ws.get_values('A:A','D:D')
+        val = ' 日期：' + tt[0][2] + '\n'
+        val += '個∣ 團∣ 隊\n'
+        val += '人∣ 隊∣ 員\n'
+        for cel in range(4,len(tt)):
+            val +=  '  ' + tt[cel][2] + '\t∣  ' + tt[cel][3] + '\t∣ ' + tt[cel][1] + '\n' 
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
         
         
         
