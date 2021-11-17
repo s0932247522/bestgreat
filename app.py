@@ -182,7 +182,15 @@ def handle_message(event):
         for cel in range(4,len(tt)):
             val +=   tt[cel][7] + '\t∣' + tt[cel][8] + '\t∣' + tt[cel][6] + '\n' 
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
-            
+    elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '功能') and (len(event.message.text.split('-')) == 2):
+        val = '大家好！我有以下功能！\n'
+        val+='查詢本隊個人成績？\n'
+        val +='#-尚讚-detail\n'
+        val +='#-紅不讓-detail\n'
+        val+='查詢當天是否上傳？\n'
+        val +='#-尚讚-today\n'
+        val +='#-紅不讓-today\n'
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))        
         
         
             
