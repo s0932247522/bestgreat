@@ -163,8 +163,8 @@ def handle_message(event):
         ws = sh.worksheet_by_title('today_upload')
         tt = ws.get_values('A:A','D:D')
         val = ' 日期：' + tt[0][2] + '\n'
-        val += '個∣ 團∣ 隊\n'
-        val += '人∣ 隊∣ 員\n'
+        val += '個∣\t團∣\t隊\n'
+        val += '人∣\t隊∣\t員\n'
         for cel in range(4,len(tt)):
             val +=  '  ' + tt[cel][2] + '\t∣  ' + tt[cel][3] + '\t∣ ' + tt[cel][1] + '\n' 
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
