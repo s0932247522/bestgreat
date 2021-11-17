@@ -148,9 +148,10 @@ def handle_message(event):
         ws = sh.worksheet_by_title('now')
         tt = ws.get_values('A:A','G:G')
         val = ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][5] + ' / 21\n'
-        val += '個人∣ 團隊∣ 隊員\n'
+        val += '個\t∣團\t∣隊\n'
+        val += '人\t∣隊\t∣員\n'
         for cel in range(4,len(tt)):
-            val +=  '  ' + tt[cel][5] + '\t∣  ' + tt[cel][6] + '\t∣ ' + tt[cel][4] + '\n' 
+            val +=  tt[cel][5] + '\t∣' + tt[cel][6] + '\t∣' + tt[cel][4] + '\n' 
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=val))
     elif (event.message.text.split('-')[0] == '#') and(event.message.text.split('-')[1] == '自我介紹') and (len(event.message.text.split('-')) == 2):
         val='大家好！\n我是來服務大家的LINE機器人，「#-尚讚-detail」可以查詢尚讚隊的個人成績，請大家好好利用我，這次比賽希望大家能夠「人人都是隊長」，互相提醒！ '
@@ -162,7 +163,7 @@ def handle_message(event):
         sh = gc.open_by_url(gs_url)
         ws = sh.worksheet_by_title('today_upload')
         tt = ws.get_values('A:A','D:D')
-        val = ' 日期：' + tt[0][2] + '\n'
+        val = ' 日期：' + tt[0][1] + '\n倒數天數：\t' + tt[0][3] + ' / 21\n'
         val += '個\t∣團\t∣隊\n'
         val += '人\t∣隊\t∣員\n'
         for cel in range(4,len(tt)):
